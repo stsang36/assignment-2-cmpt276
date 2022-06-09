@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("../partials/histoHeader.ejs") %>
+  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histogram Generator</title>
+</head>
+<header> 
+  <h1>Histogram Generator</h1>
+</header>
+<body>
+<div class="parent"> 
+  <div class="lowerBound">
+    <h2>Lower Bounds</h2>
+    <div class="innerBox">
+      <label for="Max">Max</label>
+      <input type="text" id="Max" name="Max">
+      <br><br>
+      <label for="a+">A+</label>
+      <input type="text" id="a-plus" name="a-plus">
+      <br><br>
+      <label for="a">A</label>
+      <input type="text" id="a" name="a">
+      <br><br>
+      <label for="a-">A-</label>
+      <input type="text" id="a-minus" name="a-minus">
+      <br><br>
+      <label for="b+">B+</label>
+      <input type="text" id="b-plus" name="b-plus">
+      <br><br>
+      <label for="b">B</label>
+      <input type="text" id="b" name="b">
+      <br><br>
+      <label for="b-">B-</label>
+      <input type="text" id="b-minus" name="b-minus">
+      <br><br>
+      <label for="c+">C+</label>
+      <input type="text" id="c-plus" name="c-plus">
+      <br><br>
+      <label for="c">C</label>
+      <input type="text" id="c" name="c">
+      <br><br>
+      <label for="c-">C-</label>
+      <input type="text" id="c-minus" name="c-minus">
+      <br><br>
+      <label for="d">D</label>
+      <input type="text" id="d" name="d">
+      <br><br>
+      <label for="f">F</label>
+      <input type="text" id="f" name="f">
+    </div>
+  </div>
+  <div class = "wrapperRight">
+    <div class="histogram">
+      <h2>Histogram</h2>
+      <div class="innerList"> 
+        <div class="innerListText">
+        <br><br>
+        <b>A+</b>
+        <br><br>
+        <b>A</b>
+        <br><br>
+        <b>A-</b>
+        <br><br>
+        <b>B+</b>
+        <br><br>
+        <b>B</b>
+        <br><br>
+        <b>B-</b>
+        <br><br>
+        <b>C+</b>
+        <br><br>
+        <b>C</b>
+        <br><br>
+        <b>C-</b>
+        <br><br>
+        <b>D</b>
+        <br><br>
+        <b>F</b>
+        <br>
+        </div>
+        <div class="innerListCount">
+          <b id="a-plusList"></b>
+          <br><br>
+          <b id="aList"></b>
+          <br><br>
+          <b id="a-minusList"></b>
+          <br><br>
+          <b id="b-plusList"></b>
+          <br><br>
+          <b id="bList"></b>
+          <br><br>
+          <b id="b-minusList"></b>
+          <br><br>
+          <b id="c-plusList"></b>
+          <br><br>
+          <b id="cList"></b>
+          <br><br>
+          <b id="c-minusList"></b>
+          <br><br>
+          <b id="dList"></b>
+          <br><br>
+          <b id="fList"></b>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="gradeBox">
+      <br>
+      <label for="gradeField">New Grade: </label>
+      <input type="text" id="gradeField" name="gradeField">
+    </div>
+  </div>
+</div>
+</body>
+<script src="histogram.js"></script>
+</html>

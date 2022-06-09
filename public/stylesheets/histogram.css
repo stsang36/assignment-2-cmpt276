@@ -1,0 +1,126 @@
+@font-face {
+  font-family: 'Cambria';
+  src: url('/fonts/Cambria.ttf') format('truetype');
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h1{
+  font-family: sans-serif;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.parent h2 {
+  margin:0;
+  padding-top: 10px;
+  color: rgb(166,40,36);
+  font-size: 19px;
+  font-family: serif;
+}
+
+.parent {
+  display:flex;
+  width: 20cm;
+  font: normal 100% Cambria, Georgia,"Times New Roman", Times, serif;
+}
+
+.parent Input {
+  font: normal 100% Cambria, Georgia,"Times New Roman", Times, serif;
+  text-align: right;
+  padding-right: 15px;
+  padding-left: 15px;
+  
+}
+
+.lowerBound {
+  flex:.8;
+  background-color: rgb(234, 239, 241);
+  border: 1px rgb(213, 224, 229) solid;
+  border-radius: 5px;
+  padding-left: .5cm;
+  padding-right: .5cm;
+  padding-top: 0;
+  padding-bottom: 50px;
+  float: left;
+}
+
+.lowerBound .innerBox {
+  padding-top: .5cm;
+  padding-left: .5cm;
+  line-height: .6cm;
+}
+
+.lowerBound input {
+  float:right;
+  margin-right: 40%;
+  width: 1.5cm;
+  height: .7cm;
+}
+
+.wrapperRight * {
+  box-sizing:border-box;
+  padding:0; 
+  margin:0;
+}
+
+.wrapperRight {
+  flex:1;
+  height: auto;
+  width: auto;
+}
+
+.histogram {
+  background-color: rgb(234, 239, 241);
+  border: 1px rgb(213, 224, 229) solid;
+  border-radius: 5px;
+  margin-left: .5cm;
+  padding-left: .5cm;
+  width: 95.3%;
+  height:65%
+}
+
+.gradeBox {
+  background-color: rgb(234, 239, 241);
+  border: 1px rgb(213, 224, 229) solid;
+  border-radius: 5px;
+  margin-left: .5cm;
+  padding-left: .5cm;
+  width: 95.3%;
+  height: 32.1%;
+}
+
+.gradeBox input {
+  height: .9cm;
+  width: 4cm;
+
+}
+
+.innerList { 
+  padding-left: .5cm;
+  line-height: 14px;
+}
+
+.innerList b {
+  font-weight: normal;
+}
+
+.innerListText {
+  width: 40%;
+  float:left;
+}
+.innerListCount {
+  padding-top: 28px;
+  float:right;
+  width: 60%;
+  word-wrap: break-word;
+}
