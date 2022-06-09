@@ -1,10 +1,10 @@
-# Assignment 1 Grade Calculator
-This lets you set and keep track of grades. 
-To access this calculator go to [localhost:5000/histogram](http://localhost:5000/histogram).
+# Assignment 2 Database
+ 
+To access this calculator go to [localhost:5000/TOBECHANGED](http://localhost:5000/TOBECHANGED).
 
 ```sh
 $ git clone https://github.com/stsang36/cmpt-276.git # or clone your own fork
-$ cd cmpt-276/"Assignment 1"
+$ cd cmpt-276/"Assignment 2"
 $ npm install
 $ npm start
 ```

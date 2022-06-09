@@ -1,7 +1,7 @@
 {
-  "name": "assignment-1",
+  "name": "assignment-2",
   "version": "1.0.0",
-  "description": "A sample Node.js app using Express 4, contains histogram assignment.",
+  "description": "A sample Node.js app using Express 4, contains histogram assignment and assignment 2.",
   "engines": {
     "node": "16.x"
   },

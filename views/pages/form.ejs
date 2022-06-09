@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ("../partials/formHeader.ejs") %>
+    <title>Student Form</title>
+</head>
+<body>
+    <h1>Entering/Editing a Student</h1>
+    <div class="studentForm">
+        <select id="Students">
+            <option value="">Select a Student...</option>
+        </select>
+        <form class="studentInput" action="/changeuser" method="post">
+            <br>
+            <label for="studentName">Student Name: </label>
+            <input type="text" id="studentName" name="serv_name"></input>
+            <br>
+            <label for="weight">Weight: </label>
+            <input type="text" id="weight" name="serv_weight"></input>
+            <br>
+            <label for="height">Height: </label>
+            <input type="text" id="height" name="serv_height"></input>
+            <br>
+            <label for="hair_color">Hair color: </label>
+            <input type="text" id="hair_color" name="serv_hColor"></input>
+            <br>
+            <label for="gpa">GPA: </label>
+            <input type="text" id="gpa" name="serv_gpa"></input>
+            <br>
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+    <div class="displayButton">
+        <button id="display">Display the Database</button>
+    </div>
+</body>
+</html>
