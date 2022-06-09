@@ -8,33 +8,35 @@
     <title>Student Form</title>
 </head>
 <body>
-    <h1>Entering/Editing a Student</h1>
-    <div class="studentForm">
-        <select id="Students">
-            <option value="">Select a Student...</option>
-        </select>
-        <form class="studentInput" action="/changeuser" method="post">
-            <br>
-            <label for="studentName">Student Name: </label>
-            <input type="text" id="studentName" name="serv_name"></input>
-            <br>
-            <label for="weight">Weight: </label>
-            <input type="text" id="weight" name="serv_weight"></input>
-            <br>
-            <label for="height">Height: </label>
-            <input type="text" id="height" name="serv_height"></input>
-            <br>
-            <label for="hair_color">Hair color: </label>
-            <input type="text" id="hair_color" name="serv_hColor"></input>
-            <br>
-            <label for="gpa">GPA: </label>
-            <input type="text" id="gpa" name="serv_gpa"></input>
-            <br>
-            <button id="submit">Submit</button>
-        </form>
-    </div>
-    <div class="displayButton">
-        <button id="display">Display the Database</button>
+    <h1>Entering/Editing a student</h1>
+    <div class="parent">
+        <div class="studentForm">
+            <select id="Students">
+                <option id="studentDrop" value="">Select an existing student...</option>
+            </select>
+            <form class="studentInput" action="/changeuser" method="post">
+                <br>
+                <label for="studentName">Student Name: </label>
+                <input type="text" id="studentName" name="serv_name"></input>
+                <br>
+                <label for="weight">Weight: </label>
+                <input type="text" id="weight" name="serv_weight"></input>
+                <br>
+                <label for="height">Height: </label>
+                <input type="text" id="height" name="serv_height"></input>
+                <br>
+                <label for="hair_color">Hair color: </label>
+                <input type="text" id="hair_color" name="serv_hColor"></input>
+                <br>
+                <label for="gpa">GPA: </label>
+                <input type="text" id="gpa" name="serv_gpa"></input>
+                <br>
+                <button id="submit">Submit</button>
+            </form>
+        </div>
+        <div class="displayButton">
+            <button id="display">Display the Database</button>
+        </div>
     </div>
 </body>
 </html>
