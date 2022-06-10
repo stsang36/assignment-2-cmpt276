@@ -12,7 +12,12 @@
     <div class="parent">
         <div class="studentForm">
             <select id="Students">
-                <option id="studentDrop" value="">Select an existing student...</option>
+                <option id="studentDrop" value="">
+                    Select an existing student...
+                    <% results.forEach( (r) => { %>
+                        <option><%=r.name %></option>
+                    <%}); %>
+                </option>
             </select>
             <form class="studentInput" action="/changeuser" method="post">
                 <br>

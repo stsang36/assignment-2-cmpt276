@@ -7,6 +7,17 @@
     <title>Display students</title>
 </head>
 <body>
+    <ul>
+        <% results.forEach(function(r) { %>
+            <li>
+                <%= r.name %>, 
+                <%= r.weight %>,
+                <%= r.height %>,
+                <%= r.hair_color %>,
+                <%= r.gpa %>
+            </li>
+        <% }); %>
+    </ul>
     
 </body>
 </html>
