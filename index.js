@@ -1,4 +1,5 @@
 const express = require('express');
+const validateColor = require('validate-color').default;
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const { Pool } = require('pg');
@@ -58,6 +59,7 @@ app.get('/db', async (req, res) => {
 })
 
 app.post('/changeuser', async (req, res) => {
+
   try{
     let name = req.body.serv_name;
     let weight = req.body.serv_weight;
@@ -67,29 +69,38 @@ app.post('/changeuser', async (req, res) => {
 
     if (name == "") {
       res.send("Name cannot be blank");
+      return;
     } else if (weight < 0 || weight === "") {
       res.send("Weight must be greater than 0");
+      return;
     } else if (height < 0 || height === "") {
       res.send("Height must be greater than 0");
-    } else if (checkValidStringCSSColor(hairColor) == false) {
+      return;
+    } else if (validateColor(hairColor) === false) {
       res.send("Hair color must be a valid CSS color");
+      return;
     } else if (gpa < 0 || gpa > 4 || gpa === "") {
       res.send("GPA must be between 0 and 4");
-    }
+      return;
+    } else {
 
-    const client = await pool.connect();
-    const result = await client.query('INSERT INTO student_table(name, weight, height, hair_color, gpa) VALUES($1, $2, $3, $4, $5)', [name, weight, height, hairColor, gpa]);
-    const results = { 'results': (result) ? result.rows : null};
-    client.release();
+      const client = await pool.connect();
+      console.log(req.body);
+
+      if (req.body.action === "add") {
+        const result = await client.query('INSERT INTO student_table(name, weight, height, hair_color, gpa) VALUES($1, $2, $3, $4, $5)', [name, weight, height, hairColor, gpa]);
+      } else if (req.body.action === "delete") {
+        const result = await client.query('DELETE FROM student_table WHERE name = $1', [name]);
+      }
+      client.release();
+      res.redirect('/form');
+    }
   } catch (err) {
     console.error(err);
   }
-  res.redirect('/form');
+
+  res.end();
+
+  return;
 });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-function checkValidStringCSSColor (color) {
-  let toCheck = new Option().style;
-  toCheck.color = color;
-  return toCheck.color === color.toLowerCase();
-}

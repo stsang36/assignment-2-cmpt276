@@ -27,6 +27,7 @@ html, * {
 .studentInput button {
     float: right;
     margin-top: 20px;
+    margin:10px;
 }
 
 .displayButton {
