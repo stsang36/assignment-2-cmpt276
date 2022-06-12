@@ -5,21 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include ("../partials/formHeader.ejs") %>
-    <title>Student Form</title>
 </head>
 <body>
     <h1>Entering/Editing a student</h1>
     <div class="parent">
         <div class="studentForm">
-            <select id="Students">
+            <select id="Students" onchange="autoFill(this)">
                 <option id="studentDrop" value="">
                     Select an existing student...
                     <% results.forEach( (r) => { %>
-                        <option><%=r.name %></option>
+                        <option value=<%=JSON.stringify(r)%>><%=r.name %></option>
                     <%}); %>
                 </option>
             </select>
             <form class="studentInput" action="/changeuser" method="post">
+
                 <br>
                 <label for="studentName">Student Name: </label>
                 <input type="text" id="studentName" name="serv_name"></input>
@@ -36,14 +36,15 @@
                 <label for="gpa">GPA: </label>
                 <input type="text" id="gpa" name="serv_gpa"></input>
                 <br>
-                <button id="submit">Submit</button>
+                <button class="btn btn-primary btn-sm" id="submit">Submit</button>
             </form>
         </div>
         <div class="displayButton">
-            <a href='display'> 
-                <button id="display">Display the Database</button>
+            <a href='form/display'> 
+                <button class="btn btn-primary" id="display">Display the Database</button>
             </a>
         </div>
     </div>
 </body>
+<script src="form.js"></script>
 </html>

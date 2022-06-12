@@ -3,9 +3,9 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL, //|| 'postgresql://postgres:root@winhost:5432/postgres',
   ssl: {
-    rejectUnauthorized: false
+    //rejectUnauthorized: false
 
   }
 });
@@ -31,7 +31,7 @@ app.get('/form', async (req, res) => {
   }
 
 });
-app.get('/display', async (req, res) => {
+app.get('/form/display', async (req, res) => {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM student_table');
@@ -64,6 +64,24 @@ app.post('/changeuser', async (req, res) => {
     let height = req.body.serv_height;
     let hairColor = req.body.serv_hColor;
     let gpa = req.body.serv_gpa;
+
+    if (name == "") {
+      res.send("Name cannot be blank");
+    } else if (weight < 0 || weight === "") {
+      res.send("Weight must be greater than 0");
+    } else if (height < 0 || height === "") {
+      res.send("Height must be greater than 0");
+    } else if (checkValidStringCSSColor(hairColor) == false) {
+      res.send("Hair color must be a valid CSS color");
+    } else if (gpa < 0 || gpa > 4 || gpa === "") {
+      res.send("GPA must be between 0 and 4");
+    }
+
+    function checkValidStringCSSColor (color) {
+      let toCheck = new Option().style;
+      toCheck.color = color;
+      return toCheck.color === color.toLowerCase();
+    }
 
     const client = await pool.connect();
     const result = await client.query('INSERT INTO student_table(name, weight, height, hair_color, gpa) VALUES($1, $2, $3, $4, $5)', [name, weight, height, hairColor, gpa]);

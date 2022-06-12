@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/display.css" />
     <title>Display students</title>
 </head>
 <body>
     <ul>
-        <% results.forEach(function(r) { %>
+        <% results.forEach( (r) => { %>
             <li>
+                <%= r.id %>,
                 <%= r.name %>, 
                 <%= r.weight %>,
                 <%= r.height %>,
@@ -19,5 +21,20 @@
         <% }); %>
     </ul>
     
+    <br>
+    
+    <% results.forEach( (r) => { %>
+        <div class="visual">
+            <div class="aStudent" style= <%= 
+            'background-color:' + r.hair_color + ';' + 
+            'width:' + r.weight + 'px;' +
+            'height:' + r.height + 'px;'
+            %>>
+                <b><%= r.name %></b> 
+            </div>
+        </div>
+    <% }); %>
+    
+
 </body>
 </html>
