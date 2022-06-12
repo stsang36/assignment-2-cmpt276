@@ -27,7 +27,7 @@ app.get('/form', async (req, res) => {
     client.release();
   } catch (err) {
     console.log(err);
-    res.send("Error " + err);
+    res.send(err);
   }
 
 });
@@ -53,7 +53,7 @@ app.get('/db', async (req, res) => {
     client.release();
   } catch (err) {
     console.error(err);
-    res.send("Error " + err);
+    res.send(err);
   }
 })
 
@@ -77,12 +77,6 @@ app.post('/changeuser', async (req, res) => {
       res.send("GPA must be between 0 and 4");
     }
 
-    function checkValidStringCSSColor (color) {
-      let toCheck = new Option().style;
-      toCheck.color = color;
-      return toCheck.color === color.toLowerCase();
-    }
-
     const client = await pool.connect();
     const result = await client.query('INSERT INTO student_table(name, weight, height, hair_color, gpa) VALUES($1, $2, $3, $4, $5)', [name, weight, height, hairColor, gpa]);
     const results = { 'results': (result) ? result.rows : null};
@@ -93,3 +87,9 @@ app.post('/changeuser', async (req, res) => {
   res.redirect('/form');
 });
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+function checkValidStringCSSColor (color) {
+  let toCheck = new Option().style;
+  toCheck.color = color;
+  return toCheck.color === color.toLowerCase();
+}
