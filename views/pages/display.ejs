@@ -4,34 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/display.css" />
-    <title>Display students</title>
+    <%- include ("../partials/displayHeader.ejs") %>
 </head>
 <body>
-    <ol>
-        <% results.forEach( (r) => { %>
-            <li>
-                ID: <%= r.id %>,
-                NAME: <%= r.name %>, 
-                WEIGHT: <%= r.weight %>,
-                HEIGHT: <%= r.height %>,
-                HAIR: <%= r.hair_color %>,
-                GPA: <%= r.gpa %>
-            </li>
-        <% }); %>
-    </ol>
-    <br>
+    <div class="backButton">
+        <a href='/form'> 
+            <button class="btn btn-primary" id="back">Back to the Form</button>
+        </a>
+    </div>
+    <div class="studentList">
+        <h1>Students: </h1>
+        <ul>
+            <% results.forEach( (r) => { %>
+                <li>
+                    ID: <%= r.id %>,
+                    NAME: <%= r.name %>, 
+                    WEIGHT: <%= r.weight %>,
+                    HEIGHT: <%= r.height %>,
+                    HAIR: <%= r.hair_color %>,
+                    GPA: <%= r.gpa %>,
+                    FACE: <%= r.face %>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <h1>Boxes: </h1>
     <div class="studentBoxes">
         <% results.forEach( (r) => { %>
             <div class="visual">
                 <div class="aStudent" style= <%= 
                 'background-color:' + r.hair_color + ';' + 
                 'width:' + r.weight + 'px;' +
-                'height:' + r.height + 'px;'
+                'height:' + r.height + 'px;' 
                 %>>
                     <b><%= r.name %></b> 
                     <br>
-                    <b><%= r.gpa %></b> 
+                    <b><%= r.gpa %></b>
+                    <br> 
+                    <b><%= r.face %></b>
                 </div>
             </div>
         <% }); %>

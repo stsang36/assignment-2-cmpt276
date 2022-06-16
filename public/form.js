@@ -27,7 +27,6 @@ function eraseFields() {
     document.getElementById("gpa").value = "";
 }
 
-console.log("This script is working!");
 
 // fetch('/changeuser', {
 //     method: 'POST',

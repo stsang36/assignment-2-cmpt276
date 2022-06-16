@@ -1,14 +1,16 @@
 const express = require('express');
+const cool = require('cool-ascii-faces');
+const funny = require('awesome-dev-jokes');
 const validateColor = require('validate-color').default;
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL, //|| 'postgresql://postgres:root@winhost:5432/postgres',
-   ssl: {
-     rejectUnauthorized: false
+    ssl: {
+      rejectUnauthorized: false
 
-  }
+   }
 });
 
 app = express()
@@ -23,7 +25,7 @@ app.get('/form', async (req, res) => {
   try {
     const client = await pool.connect()
     const result = await client.query('SELECT * FROM student_table');
-    const results = { 'results': (result) ? result.rows : null};
+    const results = {'results': (result) ? result.rows : null, 'joke': funny.getRandomJoke()};
     res.render('pages/form', results);
     client.release();
   } catch (err) {
@@ -37,7 +39,7 @@ app.get('/form/display', async (req, res) => {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM student_table');
     const results = { 'results': (result) ? result.rows : null};
-    res.render('pages/display', results);
+    res.render('pages/display',results );
     client.release();
   } catch (err) {
     console.error(err);
@@ -52,6 +54,7 @@ app.post('/changeuser', async (req, res) => {
     let height = req.body.serv_height;
     let hairColor = req.body.serv_hColor;
     let gpa = req.body.serv_gpa;
+    let face = cool();
 
     name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
     hairColor = hairColor.charAt(0).toUpperCase() + hairColor.slice(1).toLowerCase();
@@ -84,7 +87,7 @@ app.post('/changeuser', async (req, res) => {
           let exists = result.rows[0].exists;
 
           if (!exists) {
-            const result = await client.query('INSERT INTO student_table(name, weight, height, hair_color, gpa) VALUES($1, $2, $3, $4, $5)', [name, weight, height, hairColor, gpa]);
+            const result = await client.query('INSERT INTO student_table(name, weight, height, hair_color, gpa, face) VALUES($1, $2, $3, $4, $5, $6)', [name, weight, height, hairColor, gpa, face]);
           } else {
             const result = await client.query('UPDATE student_table SET weight = $1, height = $2, hair_color = $3, gpa = $4 WHERE name = $5', [weight, height, hairColor, gpa, name]);
           }
@@ -104,5 +107,4 @@ app.post('/changeuser', async (req, res) => {
 
   return;
 });
-
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
