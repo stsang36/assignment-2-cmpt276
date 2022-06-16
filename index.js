@@ -4,11 +4,11 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:root@winhost:5432/postgres',
-  // ssl: {
-  //   rejectUnauthorized: false
+  connectionString: process.env.DATABASE_URL, //|| 'postgresql://postgres:root@winhost:5432/postgres',
+   ssl: {
+     rejectUnauthorized: false
 
-  // }
+  }
 });
 
 app = express()
