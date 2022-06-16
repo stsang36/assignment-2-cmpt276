@@ -1,5 +1,5 @@
 .aStudent b {
-    color: white;
+    color: black;
 }
 
 .aStudent {
@@ -10,4 +10,10 @@
 
 .visual {
     padding:10px;
+}
+
+.studentBoxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

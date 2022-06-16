@@ -8,33 +8,34 @@
     <title>Display students</title>
 </head>
 <body>
-    <ul>
+    <ol>
         <% results.forEach( (r) => { %>
             <li>
-                <%= r.id %>,
-                <%= r.name %>, 
-                <%= r.weight %>,
-                <%= r.height %>,
-                <%= r.hair_color %>,
-                <%= r.gpa %>
+                ID: <%= r.id %>,
+                NAME: <%= r.name %>, 
+                WEIGHT: <%= r.weight %>,
+                HEIGHT: <%= r.height %>,
+                HAIR: <%= r.hair_color %>,
+                GPA: <%= r.gpa %>
             </li>
         <% }); %>
-    </ul>
-    
+    </ol>
     <br>
-    
-    <% results.forEach( (r) => { %>
-        <div class="visual">
-            <div class="aStudent" style= <%= 
-            'background-color:' + r.hair_color + ';' + 
-            'width:' + r.weight + 'px;' +
-            'height:' + r.height + 'px;'
-            %>>
-                <b><%= r.name %></b> 
+    <div class="studentBoxes">
+        <% results.forEach( (r) => { %>
+            <div class="visual">
+                <div class="aStudent" style= <%= 
+                'background-color:' + r.hair_color + ';' + 
+                'width:' + r.weight + 'px;' +
+                'height:' + r.height + 'px;'
+                %>>
+                    <b><%= r.name %></b> 
+                    <br>
+                    <b><%= r.gpa %></b> 
+                </div>
             </div>
-        </div>
-    <% }); %>
-    
+        <% }); %>
+    </div>
 
 </body>
 </html>
