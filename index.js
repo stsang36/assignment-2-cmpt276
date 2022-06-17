@@ -6,11 +6,11 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, //|| 'postgresql://postgres:root@winhost:5432/postgres',
-    ssl: {
-      rejectUnauthorized: false
+  connectionString: process.env.DATABASE_URL, //FOR LOCAL TESTING ONLY ON WSL2! || 'postgresql://postgres:root@winhost:5432/postgres',
+     ssl: {
+       rejectUnauthorized: false
 
-   }
+    }
 });
 
 app = express()
@@ -49,31 +49,30 @@ app.get('/form/display', async (req, res) => {
 app.post('/changeuser', async (req, res) => {
 
   try{
-    let name = req.body.serv_name;
-    let weight = req.body.serv_weight;
-    let height = req.body.serv_height;
-    let hairColor = req.body.serv_hColor;
-    let gpa = req.body.serv_gpa;
+    let name = req.body.serv_name.trim();
+    let weight = req.body.serv_weight.trim();
+    let height = req.body.serv_height.trim();
+    let hairColor = req.body.serv_hColor.trim();
+    let gpa = req.body.serv_gpa.trim();
     let face = cool();
 
     name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
     hairColor = hairColor.charAt(0).toUpperCase() + hairColor.slice(1).toLowerCase();
 
     if (name === "") {
-      res.send("Name cannot be blank");
-      return;
+      throw ("Name cannot be blank");
     } else if (weight < 0 || weight === "" || isNaN(weight)) {
-      res.send("Weight must be greater than 0");
-      return;
+      throw ("Weight must be a positive number");
+
     } else if (height < 0 || height === "" || isNaN(height)) {
-      res.send("Height must be greater than 0");
-      return;
+      throw ("Height must be a positive number");
+
     } else if (validateColor(hairColor) === false) {
-      res.send("Hair color must be a valid CSS color");
-      return;
+      throw ("Hair color must be a valid color");
+
     } else if (gpa < 0 || gpa > 4 || gpa === "" || isNaN(gpa)) {
-      res.send("GPA must be between 0 and 4");
-      return;
+      throw ("GPA must be a number between 0 and 4");
+
     } else {
       const client = await pool.connect();
 
@@ -100,11 +99,13 @@ app.post('/changeuser', async (req, res) => {
       res.redirect('/form');
     }
   } catch (err) {
-    console.error(err);
+    res.status(400).send(err);
   }
 
   res.end();
 
   return;
 });
+
+
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

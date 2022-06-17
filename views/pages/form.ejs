@@ -7,6 +7,12 @@
     <%- include ("../partials/formHeader.ejs") %>
 </head>
 <body>
+    <div class="funnyJoke">
+        <h2>Quote of the day: </h2>
+        <b>
+            <%=joke%>
+        </b>
+    </div>
     <h1>Entering/Editing a student</h1>
     <div class="parent">
         <div class="studentForm">
@@ -14,7 +20,7 @@
                 <option id="studentDrop" value="">
                     Select an existing student...
                     <% results.forEach( (r) => { %>
-                        <option value=<%=JSON.stringify(r)%>><%=r.name %></option>
+                        <option value="<%=JSON.stringify(r)%>"><%=r.name %></option>
                     <%}); %>
                 </option>
             </select>
@@ -45,12 +51,6 @@
                 <button class="btn btn-primary" id="display">Display the Database</button>
             </a>
         </div>
-    </div>
-    <div class="funnyJoke">
-        <h2>Quote of the day: </h2>
-        <b>
-            <%=joke%>
-        </b>
     </div>
 </body>
 <script src="form.js"></script>
