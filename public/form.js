@@ -1,4 +1,3 @@
-
 const inputFields = [
     'studentName',
     'weight',
@@ -21,8 +20,8 @@ inputFields.forEach(element => {
         let aInput = document.getElementById(element);
 
         aInput.onchange = (e) => {
-            
-            switch(element) {
+
+            switch (element) {
                 case 'studentName':
                     if (e.target.value === "") {
                         alert("Name cannot be blank!");
@@ -69,7 +68,7 @@ inputFields.forEach(element => {
 
 // checks valid CSS color, similar to validateHairColor in index.js
 function checkHairColor(color) {
-    
+
     try {
         let mycolor = color.toLowerCase().trim();
         let test = new Option().style;
@@ -99,19 +98,20 @@ function autoFill(r) {
             console.log(err);
         }
 
-    } else {
+    } else { // if the user selects nothing, clear the values"
         myValues['name'] = "";
         myValues['weight'] = "";
         myValues['height'] = "";
         myValues['hair_color'] = "";
         myValues['gpa'] = "";
-    } 
+    }
 
     refreshValues();
-    
+
     return;
 }
 
+// refreshes the values on the page
 function refreshValues() {
     try {
         document.getElementById("studentName").value = myValues['name'];
