@@ -99,6 +99,12 @@ function autoFill(r) {
             console.log(err);
         }
 
+    } else {
+        myValues['name'] = "";
+        myValues['weight'] = "";
+        myValues['height'] = "";
+        myValues['hair_color'] = "";
+        myValues['gpa'] = "";
     } 
 
     refreshValues();
